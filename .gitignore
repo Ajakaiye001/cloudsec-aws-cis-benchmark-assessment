@@ -1,0 +1,21 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+*.tfplan
+crash.log
+
+# Raw scanner output (contains account IDs and resource ARNs)
+prowler-run-*/
+*.ocsf.json
+
+# Python
+venv/
+.venv/
+__pycache__/
+
+# Secrets
+.env
+*.pem
