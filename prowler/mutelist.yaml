@@ -1,0 +1,29 @@
+# Prowler mutelist used for the verification scan (run 2).
+# Account ID and NACL ID replaced with placeholders for publication.
+Mutelist:
+  Accounts:
+    "<AWS_ACCOUNT_ID>":
+      Checks:
+        "cloudwatch_*":
+          Regions:
+            - "*"
+          Resources:
+            - "*"
+        "cloudtrail_*":
+          Regions:
+            - "*"
+          Resources:
+            - "*"
+        "config_*":
+          Regions:
+            - "*"
+          Resources:
+            - "*"
+        # The baseline flagged the pre-existing default VPC NACL, which is not
+        # created or managed by the supplied lab Terraform configuration.
+        # Scope this suppression to that exact NACL and region only.
+        "ec2_networkacl_*":
+          Regions:
+            - "eu-north-1"
+          Resources:
+            - "arn:aws:ec2:eu-north-1:<AWS_ACCOUNT_ID>:network-acl/<DEFAULT_NACL_ID>"
